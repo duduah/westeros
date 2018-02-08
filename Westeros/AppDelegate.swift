@@ -14,8 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
+        [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//      Podemos poner esto y quitar los interrogantes del optional de window:
+//        guard let window = window else {
+//            return true;
+//        }
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .cyan // Realmente es UIColor.cyan, pero por inferencia de tipos ya lo sabe y no hace falta poner el tipo UIColor
+        
+        // Al no usar storyboard, hay que hacerla visible:
+        window?.makeKeyAndVisible()
+        
+        let root = UIViewController()
+        window?.rootViewController = root
+        
+        
         return true
     }
 

@@ -1,5 +1,5 @@
 //
-//  WesterosTests.swift
+//  CharacterTests.swift
 //  WesterosTests
 //
 //  Created by Diego Gay Saez on 08/02/2018.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Westeros
 
-class WesterosTests: XCTestCase {
+class CharacterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,16 +21,8 @@ class WesterosTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCharacterExistence() {
+        let character = Character()
+        XCTAssertNotNil(character)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
