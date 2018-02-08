@@ -12,8 +12,8 @@
 		B302EEDC202CE4AE0064363F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B302EEDA202CE4AE0064363F /* LaunchScreen.storyboard */; };
 		B302EEF2202CF01B0064363F /* HouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302EEF1202CF01B0064363F /* HouseTests.swift */; };
 		B302EEF6202CF1D00064363F /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302EEF5202CF1D00064363F /* House.swift */; };
-		B302EEFD202CFD850064363F /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302EEFC202CFD850064363F /* CharacterTests.swift */; };
-		B302EEFF202CFDEF0064363F /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302EEFE202CFDEF0064363F /* Character.swift */; };
+		B302EEFD202CFD850064363F /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302EEFC202CFD850064363F /* PersonTests.swift */; };
+		B302EEFF202CFDEF0064363F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302EEFE202CFDEF0064363F /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +36,8 @@
 		B302EEE8202CE4AE0064363F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B302EEF1202CF01B0064363F /* HouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseTests.swift; sourceTree = "<group>"; };
 		B302EEF5202CF1D00064363F /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
-		B302EEFC202CFD850064363F /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
-		B302EEFE202CFDEF0064363F /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		B302EEFC202CFD850064363F /* PersonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTests.swift; sourceTree = "<group>"; };
+		B302EEFE202CFDEF0064363F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			children = (
 				B302EEE8202CE4AE0064363F /* Info.plist */,
 				B302EEF1202CF01B0064363F /* HouseTests.swift */,
-				B302EEFC202CFD850064363F /* CharacterTests.swift */,
+				B302EEFC202CFD850064363F /* PersonTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				B302EEF5202CF1D00064363F /* House.swift */,
-				B302EEFE202CFDEF0064363F /* Character.swift */,
+				B302EEFE202CFDEF0064363F /* Person.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B302EEFF202CFDEF0064363F /* Character.swift in Sources */,
+				B302EEFF202CFDEF0064363F /* Person.swift in Sources */,
 				B302EEF6202CF1D00064363F /* House.swift in Sources */,
 				B302EED2202CE4AD0064363F /* AppDelegate.swift in Sources */,
 			);
@@ -221,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B302EEF2202CF01B0064363F /* HouseTests.swift in Sources */,
-				B302EEFD202CFD850064363F /* CharacterTests.swift in Sources */,
+				B302EEFD202CFD850064363F /* PersonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
