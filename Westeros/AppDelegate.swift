@@ -30,11 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let starkSigil = Sigil(image: UIImage(named: "codeIsComing.png")!, description: "Huargo Wolf")
         let starkHouse = House(name: "Stark", sigil: starkSigil, words: "Winter is coming")
         
+        let lannisterSigil = Sigil(image: #imageLiteral(resourceName: "lannister.jpg"), description: "Lion")
+        let lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido!")
+        
         // Crear controladores
         let starkHouseViewController = HouseDetailViewController(model: starkHouse)
+        let lannisterHouseViewController = HouseDetailViewController(model: lannisterHouse)
+        
+        // Crear combinador
+        let tabBarViewController = UITabBarController()
+        tabBarViewController.viewControllers = [
+            starkHouseViewController, lannisterHouseViewController
+        ]
         
         // Asignamos al rooViewController
-        window?.rootViewController = starkHouseViewController
+        window?.rootViewController = tabBarViewController
         
         
         return true

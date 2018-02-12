@@ -30,9 +30,18 @@ class HouseDetailViewController: UIViewController {
     }
     
     // MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        syncModelWithView()
+//    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        syncModelWithView()
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         syncModelWithView()
     }
     
@@ -42,5 +51,6 @@ class HouseDetailViewController: UIViewController {
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
+        title = model.name
     }
 }
