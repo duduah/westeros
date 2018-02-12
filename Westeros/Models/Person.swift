@@ -53,7 +53,5 @@ extension Person: Equatable {
     static func ==(lhs: Person, rhs: Person) -> Bool {
         return lhs.proxy == rhs.proxy
     }
-    
-    
 }
 
