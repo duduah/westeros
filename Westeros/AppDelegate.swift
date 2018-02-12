@@ -26,8 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Al no usar storyboard, hay que hacerla visible:
         window?.makeKeyAndVisible()
         
-        let root = UIViewController()
-        window?.rootViewController = root
+        // Crear modelos
+        let starkSigil = Sigil(image: UIImage(named: "codeIsComing.png")!, description: "Huargo Wolf")
+        let starkHouse = House(name: "Stark", sigil: starkSigil, words: "Winter is coming")
+        
+        // Crear controladores
+        let starkHouseViewController = HouseDetailViewController(model: starkHouse)
+        
+        // Asignamos al rooViewController
+        window?.rootViewController = starkHouseViewController
         
         
         return true
