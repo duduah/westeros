@@ -22,6 +22,9 @@ class HouseDetailViewController: UIViewController {
     init(model: House) {
         self.model = model
         super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
+        
+        // Título que se verá en el tab
+        title = model.name
     }
     
     // Chapuza de los de Cupertino relacionada con los nil
@@ -35,15 +38,15 @@ class HouseDetailViewController: UIViewController {
 //
 //        syncModelWithView()
 //    }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        syncModelWithView()
-//    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         syncModelWithView()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        syncModelWithView()
+//    }
     
     // MARK: - Sync
     func syncModelWithView() {
@@ -51,6 +54,5 @@ class HouseDetailViewController: UIViewController {
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
-        title = model.name
     }
 }

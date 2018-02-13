@@ -37,12 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let starkHouseViewController = HouseDetailViewController(model: starkHouse)
         let lannisterHouseViewController = HouseDetailViewController(model: lannisterHouse)
         
-        // Crear combinador
+        // Crear combinadores
         let tabBarViewController = UITabBarController()
         tabBarViewController.viewControllers = [
             starkHouseViewController, lannisterHouseViewController
         ]
-        
+
         // Asignamos al rooViewController
         window?.rootViewController = tabBarViewController
         
