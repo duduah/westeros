@@ -29,7 +29,7 @@ class HouseTests: XCTestCase {
         lannisterSigil = Sigil(image: UIImage(), description: "Lion")
 
         starkHouse = House(name: "Stark", sigil: starkSigil, words: "Winter is coming")
-        lannisterHouse = House(name: "Lanister", sigil: starkSigil, words: "We will kill you all")
+        lannisterHouse = House(name: "Lanister", sigil: lannisterSigil, words: "We will kill you all")
         
         robb = Person(name: "Robb", alias: "Young Wolf", house: starkHouse)
         arya = Person(name: "Arya", house: starkHouse)
