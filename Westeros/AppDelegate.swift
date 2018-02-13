@@ -37,10 +37,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let starkHouseViewController = HouseDetailViewController(model: starkHouse)
         let lannisterHouseViewController = HouseDetailViewController(model: lannisterHouse)
         
+        // Creamos los navigations
+        let starkNavigationController = UINavigationController(rootViewController:
+            starkHouseViewController)
+        let lannisterNavigationController = UINavigationController(rootViewController:
+            lannisterHouseViewController)
+
         // Crear combinadores
         let tabBarViewController = UITabBarController()
         tabBarViewController.viewControllers = [
-            starkHouseViewController, lannisterHouseViewController
+            starkNavigationController, lannisterNavigationController
         ]
 
         // Asignamos al rooViewController
