@@ -18,12 +18,14 @@ final class House {
     let name: String
     let sigil: Sigil
     let words: Words
+    let wikiURL: URL
     private var _members: Members
 
-    init(name: String, sigil: Sigil, words: Words) {
+    init(name: String, sigil: Sigil, words: Words, url: URL) {
         self.name = name
         self.sigil = sigil
         self.words = words
+        self.wikiURL = url
         _members = Members()
     }
 }
@@ -38,6 +40,14 @@ extension House {
             return
         }
         _members.insert(person)
+    }
+    
+    func add(persons: Person...) {
+        // Aquí persons es de tipo Person
+//        for person in persons {
+//            add(person: person)
+//        }
+        persons.forEach{ add(person: $0) }
     }
 }
 

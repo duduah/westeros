@@ -21,6 +21,9 @@ class HouseTests: XCTestCase {
     var robb: Person!
     var arya: Person!
     var tyrion: Person!
+    var cersei: Person!
+    var jaime: Person!
+
 
     override func setUp() {
         super.setUp()
@@ -28,12 +31,18 @@ class HouseTests: XCTestCase {
         starkSigil = Sigil(image: UIImage(), description: "Huargo Wolf")
         lannisterSigil = Sigil(image: UIImage(), description: "Lion")
 
-        starkHouse = House(name: "Stark", sigil: starkSigil, words: "Winter is coming")
-        lannisterHouse = House(name: "Lanister", sigil: lannisterSigil, words: "We will kill you all")
+//        starkHouse = House(name: "Stark", sigil: starkSigil, words: "Winter is coming")
+//        lannisterHouse = House(name: "Lanister", sigil: lannisterSigil, words: "We will kill you all")
         
+        starkHouse = House(name: "Stark", sigil: starkSigil, words: "Winter is coming", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Stark")!)
+        lannisterHouse = House(name: "Lanister", sigil: lannisterSigil, words: "We will kill you all", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Lannister")!)
+
         robb = Person(name: "Robb", alias: "Young Wolf", house: starkHouse)
         arya = Person(name: "Arya", house: starkHouse)
         tyrion = Person(name: "Tyrion", alias: "Dwarf", house: lannisterHouse)
+        cersei = Person(name: "Cersei", house: lannisterHouse)
+        jaime = Person(name: "Jaime", alias: "El Matarreyes", house: lannisterHouse)
+
     }
     
     override func tearDown() {
@@ -65,6 +74,9 @@ class HouseTests: XCTestCase {
         
         starkHouse.add(person: tyrion)
         XCTAssertEqual(starkHouse.count, 2)
+        
+        lannisterHouse.add(persons: cersei, jaime, jaime, jaime, cersei)
+        XCTAssertEqual(lannisterHouse.count, 2)
     }
     
     func testHouseEquality() {
@@ -72,7 +84,7 @@ class HouseTests: XCTestCase {
         XCTAssertEqual(starkHouse, starkHouse)
         
         // Igualdad
-        let jinxed = House(name: "Stark", sigil: starkSigil, words: "Winter is coming")
+        let jinxed = House(name: "Stark", sigil: starkSigil, words: "Winter is coming", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Stark")!)
         XCTAssertEqual(jinxed, starkHouse)
         
         // Desigualdad
