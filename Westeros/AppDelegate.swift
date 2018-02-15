@@ -26,16 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Al no usar storyboard, hay que hacerla visible:
         window?.makeKeyAndVisible()
         
-        // Crear modelos
+        // Crear modelo
         let houses = Repository.local.houses
-
-        let tabBarViewController = UITabBarController()
-        tabBarViewController.viewControllers = houses
-            .map{ HouseDetailViewController(model: $0) }
-            .map{ $0.wrappedInNavigation() }
+        
+        // Crear tabla
+        let houseListViewController = HouseListViewController(model: houses)
 
         // Asignamos al rooViewController
-        window?.rootViewController = tabBarViewController
+        window?.rootViewController = houseListViewController
         
         return true
     }
