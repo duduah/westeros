@@ -9,6 +9,7 @@
 import Foundation
 
 final class Person {
+    // MARK: - Properties
     let name: String
     let house: House
     private let _alias: String?
@@ -22,6 +23,7 @@ final class Person {
 //        }
     }
     
+    // MARK: - Initialization
     init(name: String, alias: String? = nil, house: House) {
         self.name = name
         _alias = alias
@@ -29,29 +31,38 @@ final class Person {
     }
 }
 
+
 extension Person {
     var fullName: String {
         return "\(name) \(house.name)"
     }
 }
 
-// MARK - Proxies
+// MARK: - Proxies
 extension Person {
-    var proxy: String {
+    var proxyForEquality: String {
         return "\(name) \(alias) \(house.name)"
+    }
+    var proxyForComparison: String {
+        return fullName
     }
 }
 
-// MARK - Hashable
+// MARK: - Protocols
 extension Person: Hashable {
     var hashValue: Int {
-        return proxy.hashValue
+        return proxyForEquality.hashValue
     }
 }
 
 extension Person: Equatable {
     static func ==(lhs: Person, rhs: Person) -> Bool {
-        return lhs.proxy == rhs.proxy
+        return lhs.proxyForEquality == rhs.proxyForEquality
     }
 }
 
+extension Person: Comparable {
+    static func <(lhs: Person, rhs: Person) -> Bool {
+        return lhs.proxyForComparison < rhs.proxyForComparison
+    }
+}

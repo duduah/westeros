@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let houseListViewController = HouseListViewController(model: houses)
 
         // Asignamos al rooViewController
-        window?.rootViewController = houseListViewController
+        window?.rootViewController = houseListViewController.wrappedInNavigation()
         
         return true
     }
