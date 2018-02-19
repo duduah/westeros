@@ -29,11 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Crear modelo
         let houses = Repository.local.houses
         
-        // Crear tabla
+        // Creamos los controladores (masterVC, detailVC)
         let houseListViewController = HouseListViewController(model: houses)
+        let houseDetailViewController = HouseDetailViewController(model: houses.first!)
+        
+        // Asignamos delegados
+        houseListViewController.delegate = houseDetailViewController
+        
+        // Crear el UISplitVC y le asignamos los viewControllers (master primero y detail)
+        let splitVC = UISplitViewController()
+        splitVC.viewControllers = [houseListViewController.wrappedInNavigation(),
+                                   houseDetailViewController.wrappedInNavigation()]
 
         // Asignamos al rooViewController
-        window?.rootViewController = houseListViewController.wrappedInNavigation()
+        window?.rootViewController = splitVC
         
         return true
     }
