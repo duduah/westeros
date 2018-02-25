@@ -101,6 +101,6 @@ class HouseTests: XCTestCase {
     
     func testHouseReturnsSortedArrayOfMembers() {
         starkHouse.add(persons: robb, arya)
-        XCTAssertNotEqual(starkHouse.sortedMembers, [arya, robb])
+        XCTAssertNotEqual(starkHouse.sortedMembers, [robb, arya])
     }
 }

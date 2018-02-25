@@ -18,6 +18,11 @@
 		B30CC50020362B8D00701568 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CC4FE20362B8D00701568 /* WikiViewController.xib */; };
 		B30CC503203644FA00701568 /* HouseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CC501203644FA00701568 /* HouseListViewController.swift */; };
 		B30CC504203644FA00701568 /* HouseListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CC502203644FA00701568 /* HouseListViewController.xib */; };
+		B30E7020203F2F86007C116B /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E701F203F2F86007C116B /* Season.swift */; };
+		B30E7022203F3A82007C116B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E7021203F3A82007C116B /* Episode.swift */; };
+		B30E7025203F6A0A007C116B /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E7024203F6A0A007C116B /* Date+Additions.swift */; };
+		B30E702720417CDD007C116B /* SeasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E702620417CDD007C116B /* SeasonTests.swift */; };
+		B32D373C204328A500F82FDD /* EpisodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32D373B204328A500F82FDD /* EpisodeTest.swift */; };
 		B34C1FE8203A00C600AA82D0 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34C1FE6203A00C600AA82D0 /* MemberListViewController.swift */; };
 		B34C1FE9203A00C600AA82D0 /* MemberListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34C1FE7203A00C600AA82D0 /* MemberListViewController.xib */; };
 		B34C1FEC203B68D800AA82D0 /* MemberList2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34C1FEA203B68D800AA82D0 /* MemberList2ViewController.swift */; };
@@ -58,6 +63,11 @@
 		B30CC4FE20362B8D00701568 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
 		B30CC501203644FA00701568 /* HouseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListViewController.swift; sourceTree = "<group>"; };
 		B30CC502203644FA00701568 /* HouseListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseListViewController.xib; sourceTree = "<group>"; };
+		B30E701F203F2F86007C116B /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		B30E7021203F3A82007C116B /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		B30E7024203F6A0A007C116B /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
+		B30E702620417CDD007C116B /* SeasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTests.swift; sourceTree = "<group>"; };
+		B32D373B204328A500F82FDD /* EpisodeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTest.swift; sourceTree = "<group>"; };
 		B34C1FE6203A00C600AA82D0 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
 		B34C1FE7203A00C600AA82D0 /* MemberListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberListViewController.xib; sourceTree = "<group>"; };
 		B34C1FEA203B68D800AA82D0 /* MemberList2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberList2ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +121,7 @@
 		B302EED0202CE4AD0064363F /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				B30E7023203F69EB007C116B /* FoundationExtensions */,
 				B376F15820337C430095E4C5 /* UIKitExtensions */,
 				B376F15320323AB10095E4C5 /* Controllers */,
 				B302EEF9202CF8340064363F /* Domain */,
@@ -130,6 +141,8 @@
 				B302EEF1202CF01B0064363F /* HouseTests.swift */,
 				B302EEFC202CFD850064363F /* PersonTests.swift */,
 				B376F15B203380880095E4C5 /* RepositoryTest.swift */,
+				B30E702620417CDD007C116B /* SeasonTests.swift */,
+				B32D373B204328A500F82FDD /* EpisodeTest.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -140,8 +153,18 @@
 				B302EEF5202CF1D00064363F /* House.swift */,
 				B302EEFE202CFDEF0064363F /* Person.swift */,
 				B376F15D2033816E0095E4C5 /* Repository.swift */,
+				B30E701F203F2F86007C116B /* Season.swift */,
+				B30E7021203F3A82007C116B /* Episode.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		B30E7023203F69EB007C116B /* FoundationExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				B30E7024203F6A0A007C116B /* Date+Additions.swift */,
+			);
+			path = FoundationExtensions;
 			sourceTree = "<group>";
 		};
 		B376F14E2032391D0095E4C5 /* Assets */ = {
@@ -291,10 +314,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B376F15620323D540095E4C5 /* HouseDetailViewController.swift in Sources */,
+				B30E7022203F3A82007C116B /* Episode.swift in Sources */,
 				B302EEFF202CFDEF0064363F /* Person.swift in Sources */,
+				B30E7025203F6A0A007C116B /* Date+Additions.swift in Sources */,
 				B302EEF6202CF1D00064363F /* House.swift in Sources */,
 				B376F15A20337C8C0095E4C5 /* UIViewController+Additions.swift in Sources */,
 				B302EED2202CE4AD0064363F /* AppDelegate.swift in Sources */,
+				B30E7020203F2F86007C116B /* Season.swift in Sources */,
 				B34C1FEC203B68D800AA82D0 /* MemberList2ViewController.swift in Sources */,
 				B376F15E2033816E0095E4C5 /* Repository.swift in Sources */,
 				B30CC4FF20362B8D00701568 /* WikiViewController.swift in Sources */,
@@ -307,6 +333,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B30E702720417CDD007C116B /* SeasonTests.swift in Sources */,
+				B32D373C204328A500F82FDD /* EpisodeTest.swift in Sources */,
 				B302EEF2202CF01B0064363F /* HouseTests.swift in Sources */,
 				B302EEFD202CFD850064363F /* PersonTests.swift in Sources */,
 				B376F15C203380880095E4C5 /* RepositoryTest.swift in Sources */,

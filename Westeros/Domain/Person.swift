@@ -15,12 +15,6 @@ final class Person {
     private let _alias: String?
     var alias: String {
         return _alias ?? ""
-//        if let _alias = _alias {
-//            // Existe y está en _alias
-//            return _alias
-//        } else {
-//            return ""
-//        }
     }
     
     // MARK: - Initialization

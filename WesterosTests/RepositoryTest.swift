@@ -29,7 +29,7 @@ class RepositoryTest: XCTestCase {
     
     func testLocalRepositoryHousesCreation() {
         XCTAssertNotNil(localHouses)
-        XCTAssertEqual(localHouses.count, 3)
+        XCTAssertEqual(localHouses.count, 4)
     }
     
     func testLocalRepositoryReturnsSortedArrayOfHouses() {
@@ -53,5 +53,14 @@ class RepositoryTest: XCTestCase {
         // En este caso, si en lugar de "Winter" pongo "winter" ya estamos dependiendo de los datos.
         let otherFilter = Repository.local.houses(filteredBy: {$0.words.contains("Winter")})
         XCTAssertEqual(otherFilter.count, 1)
+    }
+    
+    func testSeasonFiltering() {
+        // let currentYear = Calendar(identifier: .iso8601).component(.year, from: Date())
+        let seasonsFiltered = Repository.local.seasons(filteredBy: { $0.totalNumberOfEpisodes == 10 } )
+        XCTAssertEqual(seasonsFiltered.count, 6)
+        
+        let seasonsFiltered2 = Repository.local.seasons(filteredBy: { Date.getYearFrom(date: $0.launchingDate) == currentYear } )
+        XCTAssertEqual(seasonsFiltered2.count, 0)
     }
 }
