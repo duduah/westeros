@@ -13,13 +13,13 @@ final class Episode {
     
     // MARK: - Properties
     let title: String
-    let dateBroadcast: Date
+    let releaseDate: Date
     weak var season: Season?
     
     // MARK: - Initialization
-    init(title: String, dateBroadcast: Date, season: Season) {
+    init(title: String, releaseDate: Date, season: Season) {
         self.title = title
-        self.dateBroadcast = dateBroadcast
+        self.releaseDate = releaseDate
         self.season = season
     }
 }
@@ -27,7 +27,7 @@ final class Episode {
 // MARK: - Proxies
 extension Episode {
     var proxy: Date {
-        return dateBroadcast
+        return releaseDate
     }
 }
 

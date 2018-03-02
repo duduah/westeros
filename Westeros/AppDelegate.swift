@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //      Podemos poner esto y quitar los interrogantes del optional de window:
@@ -27,20 +26,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // Crear modelo
-        let houses = Repository.local.houses
-        
-        // Creamos los controladores (masterVC, detailVC)
-        let houseListViewController = HouseListViewController(model: houses)
-        let houseSelectedHouse = houseListViewController.lastSelectedHouse()
-        let houseDetailViewController = HouseDetailViewController(model: houseSelectedHouse)
-        
-        // Asignamos delegados
-        houseListViewController.delegate = houseDetailViewController
-        
+        let (houseListVC, houseDetailVC, seasonListVC, _) = Repository.local.appModels()
+
+        // Combinador
+        let tabBarVC = UITabBarController()
+        tabBarVC.viewControllers = [houseListVC.wrappedInNavigation(),
+                                    seasonListVC.wrappedInNavigation()]
+
         // Crear el UISplitVC y le asignamos los viewControllers (master primero y detail)
         let splitVC = UISplitViewController()
-        splitVC.viewControllers = [houseListViewController.wrappedInNavigation(),
-                                   houseDetailViewController.wrappedInNavigation()]
+        splitVC.viewControllers = [tabBarVC, houseDetailVC.wrappedInNavigation()]
+
+        // Asignamos delegados
+//        houseListVC.delegate = houseDetailVC
+//        seasonListVC.delegate = seasonDetailVC
+        tabBarVC.delegate = splitVC
+//        tabBarVC.delegate = tabBarVC
+
 
         // Asignamos al rooViewController
         window?.rootViewController = splitVC

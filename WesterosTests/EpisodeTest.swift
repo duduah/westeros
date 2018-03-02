@@ -34,12 +34,12 @@ class EpisodeTest: XCTestCase {
                                                               month: "04",
                                                               year: "2011"))
         season1Episode1 = Episode(title: "Winter is Coming",
-                                      dateBroadcast: String.getDateFor(day: "17",
+                                      releaseDate: String.getDateFor(day: "17",
                                                                        month: "04",
                                                                        year: "2011"),
                                       season: season1)
         season1Episode2 = Episode(title: "The Kingsroad",
-                                      dateBroadcast: String.getDateFor(day: "24",
+                                      releaseDate: String.getDateFor(day: "24",
                                                                        month: "04",
                                                                        year: "2011"),
                                       season: season1)
@@ -50,12 +50,12 @@ class EpisodeTest: XCTestCase {
                                                               month: "07",
                                                               year: "2017"))
         season7Episode1 = Episode(title: "Dragonstone",
-                                      dateBroadcast: String.getDateFor(day: "16",
+                                      releaseDate: String.getDateFor(day: "16",
                                                                        month: "07",
                                                                        year: "2017"),
                                       season: season7)
         season7Episode2 = Episode(title: "Stormborn",
-                                      dateBroadcast: String.getDateFor(day: "23",
+                                      releaseDate: String.getDateFor(day: "23",
                                                                        month: "07",
                                                                        year: "2017"),
                                       season: season7)
@@ -77,7 +77,7 @@ class EpisodeTest: XCTestCase {
         
         // Equality
         let anotherEpisode = Episode(title: "Another Dragonstone",
-                                     dateBroadcast: String.getDateFor(day: "16",
+                                     releaseDate: String.getDateFor(day: "16",
                                                                       month: "07",
                                                                       year: "2017"),
                                      season: season7)

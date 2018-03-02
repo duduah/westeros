@@ -6,7 +6,7 @@
 //  Copyright © 2018 Diego Gay Saez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias HouseFilter = (House) -> Bool
 typealias SeasonFilter = (Season) -> Bool
@@ -18,8 +18,10 @@ final class Repository {
 
 protocol HouseFactory {
     var houses: [House] { get }
+    var seasons: [Season] { get }
     func house(named: String) -> House?
     func houses(filteredBy: HouseFilter) -> [House]
+    func seasons(filteredBy: SeasonFilter) -> [Season]
 }
 
 final class LocalFactory: HouseFactory {
@@ -59,17 +61,17 @@ final class LocalFactory: HouseFactory {
                                                               month: "04",
                                                               year: "2011"))
         let season1Episode1 = Episode(title: "Winter is Coming",
-                                      dateBroadcast: String.getDateFor(day: "17",
+                                      releaseDate: String.getDateFor(day: "17",
                                                                        month: "04",
                                                                        year: "2011"),
                                       season: season1)
         let season1Episode2 = Episode(title: "The Kingsroad",
-                                      dateBroadcast: String.getDateFor(day: "24",
+                                      releaseDate: String.getDateFor(day: "24",
                                                                        month: "04",
                                                                        year: "2011"),
                                       season: season1)
         let season1Episode3 = Episode(title: "Lord Snow",
-                                      dateBroadcast: String.getDateFor(day: "01",
+                                      releaseDate: String.getDateFor(day: "01",
                                                                        month: "05",
                                                                        year: "2011"),
                                       season: season1)
@@ -81,12 +83,12 @@ final class LocalFactory: HouseFactory {
                                                               month: "04",
                                                               year: "2012"))
         let season2Episode1 = Episode(title: "The North Remembers",
-                                      dateBroadcast: String.getDateFor(day: "01",
+                                      releaseDate: String.getDateFor(day: "01",
                                                                        month: "04",
                                                                        year: "2012"),
                                       season: season2)
         let season2Episode2 = Episode(title: "Nightlands",
-                                      dateBroadcast: String.getDateFor(day: "08",
+                                      releaseDate: String.getDateFor(day: "08",
                                                                        month: "04",
                                                                        year: "2012"),
                                       season: season2)
@@ -98,17 +100,17 @@ final class LocalFactory: HouseFactory {
                                                               month: "03",
                                                               year: "2013"))
         let season3Episode1 = Episode(title: "Valar Dohaeris",
-                                      dateBroadcast: String.getDateFor(day: 31,
+                                      releaseDate: String.getDateFor(day: 31,
                                                                        month: .march,
                                                                        year: 2013),
                                       season: season3)
         let season3Episode2 = Episode(title: "Dark Wings, Dark Words",
-                                      dateBroadcast: String.getDateFor(day: 7,
+                                      releaseDate: String.getDateFor(day: 7,
                                                                        month: .april,
                                                                        year: 2013),
                                       season: season3)
         let season3Episode3 = Episode(title: "Walk of Punishment",
-                                      dateBroadcast: String.getDateFor(day: 14,
+                                      releaseDate: String.getDateFor(day: 14,
                                                                        month: .april,
                                                                        year: 2013),
                                       season: season3)
@@ -120,17 +122,17 @@ final class LocalFactory: HouseFactory {
                                                               month: "04",
                                                               year: "2014"))
         let season4Episode1 = Episode(title: "Two Swords",
-                                      dateBroadcast: String.getDateFor(day: "06",
+                                      releaseDate: String.getDateFor(day: "06",
                                                                        month: "04",
                                                                        year: "2014"),
                                       season: season4)
         let season4Episode2 = Episode(title: "The Lion and the Rose",
-                                      dateBroadcast: String.getDateFor(day: "13",
+                                      releaseDate: String.getDateFor(day: "13",
                                                                        month: "04",
                                                                        year: "2014"),
                                       season: season4)
         let season4Episode3 = Episode(title: "Breaker of Chains",
-                                      dateBroadcast: String.getDateFor(day: "20",
+                                      releaseDate: String.getDateFor(day: "20",
                                                                        month: "04",
                                                                        year: "2014"),
                                       season: season4)
@@ -142,12 +144,12 @@ final class LocalFactory: HouseFactory {
                                                               month: "04",
                                                               year: "2015"))
         let season5Episode1 = Episode(title: "The Wars to Come",
-                                      dateBroadcast: String.getDateFor(day: "12",
+                                      releaseDate: String.getDateFor(day: "12",
                                                                        month: "04",
                                                                        year: "2015"),
                                       season: season5)
         let season5Episode2 = Episode(title: "The House of Black and White",
-                                      dateBroadcast: String.getDateFor(day: "19",
+                                      releaseDate: String.getDateFor(day: "19",
                                                                        month: "04",
                                                                        year: "2015"),
                                       season: season5)
@@ -159,22 +161,22 @@ final class LocalFactory: HouseFactory {
                                                               month: "04",
                                                               year: "2016"))
         let season6Episode1 = Episode(title: "The Red Woman",
-                                      dateBroadcast: String.getDateFor(day: "24",
+                                      releaseDate: String.getDateFor(day: "24",
                                                                        month: "04",
                                                                        year: "2016"),
                                       season: season6)
         let season6Episode2 = Episode(title: "Home",
-                                      dateBroadcast: String.getDateFor(day: "01",
+                                      releaseDate: String.getDateFor(day: "01",
                                                                        month: "05",
                                                                        year: "2016"),
                                       season: season6)
         let season6Episode3 = Episode(title: "Oathbreaker",
-                                      dateBroadcast: String.getDateFor(day: "08",
+                                      releaseDate: String.getDateFor(day: "08",
                                                                        month: "05",
                                                                        year: "2016"),
                                       season: season6)
         let season6Episode4 = Episode(title: "Book of the Stranger",
-                                      dateBroadcast: String.getDateFor(day: "15",
+                                      releaseDate: String.getDateFor(day: "15",
                                                                        month: "05",
                                                                        year: "2016"),
                                       season: season6)
@@ -186,37 +188,37 @@ final class LocalFactory: HouseFactory {
                                                               month: "07",
                                                               year: "2017"))
         let season7Episode1 = Episode(title: "Dragonstone",
-                                      dateBroadcast: String.getDateFor(day: "16",
+                                      releaseDate: String.getDateFor(day: "16",
                                                                        month: "07",
                                                                        year: "2017"),
                                       season: season7)
         let season7Episode2 = Episode(title: "Stormborn",
-                                      dateBroadcast: String.getDateFor(day: "23",
+                                      releaseDate: String.getDateFor(day: "23",
                                                                        month: "07",
                                                                        year: "2017"),
                                       season: season7)
         let season7Episode3 = Episode(title: "The Queen's Justice",
-                                      dateBroadcast: String.getDateFor(day: "30",
+                                      releaseDate: String.getDateFor(day: "30",
                                                                        month: "07",
                                                                        year: "2017"),
                                       season: season7)
         let season7Episode4 = Episode(title: "The Spoils of War",
-                                      dateBroadcast: String.getDateFor(day: "06",
+                                      releaseDate: String.getDateFor(day: "06",
                                                                        month: "08",
                                                                        year: "2017"),
                                       season: season7)
         let season7Episode5 = Episode(title: "Eastwatch",
-                                      dateBroadcast: String.getDateFor(day: "13",
+                                      releaseDate: String.getDateFor(day: "13",
                                                                        month: "08",
                                                                        year: "2017"),
                                       season: season7)
         let season7Episode6 = Episode(title: "Beyond the Wall",
-                                      dateBroadcast: String.getDateFor(day: "20",
+                                      releaseDate: String.getDateFor(day: "20",
                                                                        month: "08",
                                                                        year: "2017"),
                                       season: season7)
         let season7Episode7 = Episode(title: "The Dragon and the Wolf",
-                                      dateBroadcast: String.getDateFor(day: "27",
+                                      releaseDate: String.getDateFor(day: "27",
                                                                        month: "08",
                                                                        year: "2017"),
                                       season: season7)
@@ -236,5 +238,32 @@ final class LocalFactory: HouseFactory {
     
     func seasons(filteredBy: SeasonFilter) -> [Season] {
         return seasons.filter(filteredBy)
-    }    
+    }
+    
+    func appModels() -> (houseList: HouseListViewController, houseDetail: HouseDetailViewController,
+        seasonList: SeasonListViewController, seasonDetail: SeasonDetailViewController) {
+        let houses = Repository.local.houses
+        let seasons = Repository.local.seasons
+//        let episodes = seasons.first?.sortedEpisodes
+//        let seasonTitleForEpisodes = seasons.first?.name
+        
+//        var listDetailArray: [(UIViewController, UIViewController)] = []
+        
+        // Creamos los controladores
+        let houseListVC = HouseListViewController(model: houses)
+        let houseDetailVC = HouseDetailViewController(model: houseListVC.lastRowSelected())
+        houseListVC.delegate = houseDetailVC
+//        listDetailArray.append((houseListVC, houseDetailVC))
+
+        let seasonListVC = SeasonListViewController(model: seasons)
+        let seasonDetailVC = SeasonDetailViewController(model: seasonListVC.lastRowSelected())
+        seasonListVC.delegate = seasonDetailVC
+//        listDetailArray.append((seasonListVC, seasonDetailVC))
+
+//        return listDetailArray
+        return (houseListVC,
+                houseDetailVC,
+                seasonListVC,
+                seasonDetailVC)
+    }
 }

@@ -14,7 +14,7 @@ final class Season {
     
     // MARK: - Properties
     let name: String
-    let launchingDate: Date
+    let releaseDate: Date
     // Total de episodios de la temporada
     let totalNumberOfEpisodes: Int
     private var _episodes: Episodes
@@ -24,7 +24,7 @@ final class Season {
          numberOfEpisodes totalNumberOfEpisodes: Int,
          launchingDate: Date) {
         self.name = name
-        self.launchingDate = launchingDate
+        self.releaseDate = launchingDate
         self.totalNumberOfEpisodes = totalNumberOfEpisodes
         self._episodes = Episodes()
     }
@@ -56,7 +56,7 @@ extension Season {
 // MARK: - Proxies
 extension Season {
     var proxy: Date {
-        return launchingDate
+        return releaseDate
     }
 }
 

@@ -8,10 +8,6 @@
 
 import UIKit
 
-let HOUSE_DID_CHANGE_NOTIFICATION_NAME = "HouseDidChange"
-let HOUSE_KEY = "HouseKey"
-let LAST_HOUSE = "LAST_HOUSE"
-
 // Por convención, el delegado se llama como la clase-Delegate
 // Solo se implementará para clases. Se puede poner AnyObject en lugar de class
 protocol HouseListViewControllerDelegate: class {
@@ -30,7 +26,7 @@ class HouseListViewController: UITableViewController {
     init(model: [House]) {
         self.model = model
         super.init(style: .plain)
-        title = "Westeros"
+        title = APP_TITLE
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -103,20 +99,20 @@ class HouseListViewController: UITableViewController {
         
         // Guardar las coordenadas (section, row) de la última casa seleccionada para cargarla la próxima vez que se abra.
         // No se deben guardar objetos del modelo ya que esto está hecho para datos ligeros.
-        saveLastSelectedHouse(at: indexPath.row)
+        saveLastSelected(at: indexPath.row, forKey: LAST_HOUSE)
     }
 }
 
 extension HouseListViewController {
-    func saveLastSelectedHouse(at row: Int) {
-        let defaults = UserDefaults.standard
-        defaults.set(row, forKey: LAST_HOUSE)
-        
-        // Por si las moscas, hay una manera de guardar la información
-        defaults.synchronize()
-    }
+//    func saveLastSelected(at row: Int) {
+//        let defaults = UserDefaults.standard
+//        defaults.set(row, forKey: LAST_HOUSE)
+//
+//        // Por si las moscas, hay una manera de guardar la información
+//        defaults.synchronize()
+//    }
     
-    func lastSelectedHouse() -> House {
+    func lastRowSelected() -> House {
         // Extraer la row del User Defaults
         let row = UserDefaults.standard.integer(forKey: LAST_HOUSE)
         
@@ -127,3 +123,5 @@ extension HouseListViewController {
         
     }
 }
+
+

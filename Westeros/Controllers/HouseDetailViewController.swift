@@ -45,6 +45,7 @@ class HouseDetailViewController: UIViewController {
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
+        title = model.name
     }
 
     // MARK: - UI
@@ -84,5 +85,7 @@ extension HouseDetailViewController: HouseListViewControllerDelegate {
     func houseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
         self.model = house
         syncModelWithView()
+        self.reloadInputViews()
     }
 }
+

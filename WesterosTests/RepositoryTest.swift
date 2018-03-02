@@ -60,7 +60,7 @@ class RepositoryTest: XCTestCase {
         let seasonsFiltered = Repository.local.seasons(filteredBy: { $0.totalNumberOfEpisodes == 10 } )
         XCTAssertEqual(seasonsFiltered.count, 6)
         
-        let seasonsFiltered2 = Repository.local.seasons(filteredBy: { Date.getYearFrom(date: $0.launchingDate) == currentYear } )
+        let seasonsFiltered2 = Repository.local.seasons(filteredBy: { Date.getYearFrom(date: $0.releaseDate) == currentYear } )
         XCTAssertEqual(seasonsFiltered2.count, 0)
     }
 }
