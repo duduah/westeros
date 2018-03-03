@@ -32,7 +32,8 @@ class SeasonListViewController: UITableViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        selectLastSelectedRowFromUserDefaults(in: self, withKey: SEASON_KEY)
     }
 
     // MARK: - Table view data source
@@ -68,24 +69,24 @@ class SeasonListViewController: UITableViewController {
                             didSelectRowAt indexPath: IndexPath) {
         let season = model[indexPath.row]
         
+        // Comunicate change to delegate
         delegate?.seasonListViewController(self, didSelect: season)
-//        
+        
+        // Add notification
+        let notificationCenter = NotificationCenter.default
+        
+        let notification = Notification(name: Notification.Name(SEASON_DID_CHANGE_NOTIFICATION_NAME),
+                                        object: self,
+                                        userInfo: [SEASON_KEY: season])
+        notificationCenter.post(notification)
 //        let seasonDetailVC = SeasonDetailViewController(model: season)
 //        navigationController?.pushViewController(seasonDetailVC, animated: true)
-        
+
         saveLastSelected(at: indexPath.row, forKey: LAST_SEASON)
     }
 }
 
-extension SeasonListViewController {
-//    func saveLastSelected(at row: Int, forKey: String) {
-//        let defaults = UserDefaults.standard
-//        defaults.set(row, forKey: forKey)
-//        
-//        // Por si las moscas, hay una manera de guardar la información
-//        defaults.synchronize()
-//    }
-    
+extension SeasonListViewController {    
     func lastRowSelected() -> Season {
         // Extraer la row del User Defaults
         let row = UserDefaults.standard.integer(forKey: LAST_SEASON)

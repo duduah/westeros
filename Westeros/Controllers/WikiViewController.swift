@@ -22,6 +22,9 @@ class WikiViewController: UIViewController {
     init(model: House) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
+        
+        // Título para vistas de navigation/tabbar...
+        title = "\(model.name) wiki"
     }
     
     // chapuza metida por compilador

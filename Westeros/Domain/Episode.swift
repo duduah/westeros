@@ -14,12 +14,18 @@ final class Episode {
     // MARK: - Properties
     let title: String
     let releaseDate: Date
+    let director: [String]
+    let scriptWriter: [String]
+    let plot: String
     weak var season: Season?
     
     // MARK: - Initialization
-    init(title: String, releaseDate: Date, season: Season) {
+    init(title: String, releaseDate: Date, director: [String], scriptWriter: [String], plot: String, season: Season) {
         self.title = title
         self.releaseDate = releaseDate
+        self.director = director
+        self.scriptWriter = scriptWriter
+        self.plot = plot
         self.season = season
     }
 }
@@ -27,7 +33,7 @@ final class Episode {
 // MARK: - Proxies
 extension Episode {
     var proxy: Date {
-        return releaseDate
+        return self.releaseDate
     }
 }
 
@@ -52,11 +58,11 @@ extension Episode: Comparable {
 
 extension Episode: CustomStringConvertible {
     var description: String {
-        guard let season = season else {
+        guard let theSeason = season else {
             return "Title: '\(title)'"
         }
-        
-        return "Title: '\(title)'. Season: '\(season.name)'"
+
+        return "Title: '\(title)'. Season: '\(theSeason.name)'"
     }
     
     

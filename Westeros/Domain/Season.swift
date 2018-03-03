@@ -15,6 +15,7 @@ final class Season {
     // MARK: - Properties
     let name: String
     let releaseDate: Date
+    let plot: String
     // Total de episodios de la temporada
     let totalNumberOfEpisodes: Int
     private var _episodes: Episodes
@@ -22,10 +23,12 @@ final class Season {
     // MARK: - Initialization
     init(seasonName name: String,
          numberOfEpisodes totalNumberOfEpisodes: Int,
-         launchingDate: Date) {
+         releaseDate: Date,
+         plot: String) {
         self.name = name
-        self.releaseDate = launchingDate
+        self.releaseDate = releaseDate
         self.totalNumberOfEpisodes = totalNumberOfEpisodes
+        self.plot = plot
         self._episodes = Episodes()
     }
 }

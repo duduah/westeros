@@ -13,7 +13,7 @@ class MemberList2ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
-    let model: [Person]
+    var model: [Person]
 
     // MARK: - Initialization
     init(model: [Person]) {
@@ -32,6 +32,34 @@ class MemberList2ViewController: UIViewController {
         
         // Asignamos fuente de datos
         tableView.dataSource = self
+        tableView.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        // Subscribe to notification
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(houseDidChange),
+                                       name: NSNotification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME),
+                                       object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // Unsubscribe from notification
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
+    }
+    
+    // MARK: - Notifications
+    @objc func houseDidChange(notification: Notification) {
+        guard let info = notification.userInfo else {
+            return
+        }
+        
+        let house = info[HOUSE_KEY] as? House
+        model = (house?.sortedMembers)!
+
+        tableView.reloadData()
     }
 }
 
@@ -59,6 +87,20 @@ extension MemberList2ViewController: UITableViewDataSource {
         cell.textLabel?.text = person.fullName
         
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension MemberList2ViewController: UITableViewDelegate {
+    // MARK: - Table view delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Get the model
+        let person = model[indexPath.row]
+
+        // Get the view controller for the model to push
+        let memberDetailVC = MemberDetailViewController(model: person)
+
+        navigationController?.pushViewController(memberDetailVC, animated: true)
     }
 }
 

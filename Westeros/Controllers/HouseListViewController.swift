@@ -39,7 +39,7 @@ class HouseListViewController: UITableViewController {
         
         let lastRow = UserDefaults.standard.integer(forKey: LAST_HOUSE)
         let indexPath = IndexPath(row: lastRow, section: 0)
-        
+
         tableView.selectRow(at: indexPath,
                             animated: true,
                             scrollPosition: .top)
@@ -104,14 +104,6 @@ class HouseListViewController: UITableViewController {
 }
 
 extension HouseListViewController {
-//    func saveLastSelected(at row: Int) {
-//        let defaults = UserDefaults.standard
-//        defaults.set(row, forKey: LAST_HOUSE)
-//
-//        // Por si las moscas, hay una manera de guardar la información
-//        defaults.synchronize()
-//    }
-    
     func lastRowSelected() -> House {
         // Extraer la row del User Defaults
         let row = UserDefaults.standard.integer(forKey: LAST_HOUSE)

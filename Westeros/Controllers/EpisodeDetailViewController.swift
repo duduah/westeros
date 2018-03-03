@@ -10,9 +10,13 @@ import UIKit
 
 class EpisodeDetailViewController: UIViewController {
     @IBOutlet weak var episodeReleaseDateLabel: UILabel!
+    @IBOutlet weak var episodeTitleLabel: UILabel!
+    @IBOutlet weak var episodeDirectorLabel: UILabel!
+    @IBOutlet weak var episodeWriterLabel: UILabel!
+    @IBOutlet weak var episodePlotLabel: UILabel!
     
     // MARK: - Properties
-    let model: Episode
+    var model: Episode
     
     // MARK: - Initialization
     init(model: Episode) {
@@ -32,9 +36,35 @@ class EpisodeDetailViewController: UIViewController {
         syncModelWithView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        subscriteToDefaultNotification(self,
+                                       selector: #selector(seasonDidChange),
+                                       name: SEASON_DID_CHANGE_NOTIFICATION_NAME)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeFromDefaultNotification(self)
+    }
+    
     // MARK: - Sync
     func syncModelWithView() {
+        episodeTitleLabel.text = model.title
         episodeReleaseDateLabel.text = model.releaseDate.description
+        episodePlotLabel.text = model.plot
+        episodeWriterLabel.text = model.scriptWriter.joined(separator: " & ")
+        episodeDirectorLabel.text = model.director.joined(separator: " & ")
+        
         title = model.title
     }
+    
+    // MARK: - Notifications
+    @objc func seasonDidChange(notification: Notification) {
+        guard let info = notification.userInfo else {
+            return
+        }
+        let season = info[SEASON_KEY] as? Season
+        model = (season?.sortedEpisodes.first)!
+        syncModelWithView()
+    }
 }
+

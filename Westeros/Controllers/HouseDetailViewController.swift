@@ -23,7 +23,7 @@ class HouseDetailViewController: UIViewController {
         self.model = model
         super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
         
-        // Título que se verá en el tab
+        // Título para vistas de navigation/tabbar...
         title = model.name
     }
     
@@ -50,11 +50,11 @@ class HouseDetailViewController: UIViewController {
 
     // MARK: - UI
     func setupUI() {
-        let wikiButton = UIBarButtonItem(title: "Wiki",
+        let wikiButton = UIBarButtonItem(title: WIKI_TITLE,
                                          style: .plain,
                                          target: self,
                                          action: #selector(displayWiki))
-        let membersButton = UIBarButtonItem(title: "Member",
+        let membersButton = UIBarButtonItem(title: MEMBERS_TITLE,
                                             style: .plain,
                                             target: self,
                                             action: #selector(displayMembers))

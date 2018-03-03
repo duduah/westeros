@@ -29,35 +29,37 @@ class EpisodeTest: XCTestCase {
         super.setUp()
         
         season1 = Season(seasonName: "Season 1. Game of Thrones",
-                             numberOfEpisodes: 10,
-                             launchingDate: String.getDateFor(day: "17",
-                                                              month: "04",
-                                                              year: "2011"))
+                         numberOfEpisodes: 10,
+                         releaseDate: Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 17)),
+                         plot: "Plot season 1")
         season1Episode1 = Episode(title: "Winter is Coming",
-                                      releaseDate: String.getDateFor(day: "17",
-                                                                       month: "04",
-                                                                       year: "2011"),
+                                      releaseDate: Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 17)),
+                                      director: ["Tim Van Patten"],
+                                      scriptWriter: ["David Benioff", "D. B. Weiss"],
+                                      plot: "Plot season 1, episode 1",
                                       season: season1)
         season1Episode2 = Episode(title: "The Kingsroad",
-                                      releaseDate: String.getDateFor(day: "24",
-                                                                       month: "04",
-                                                                       year: "2011"),
+                                      releaseDate: Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 24)),
+                                      director: ["Tim Van Patten"],
+                                      scriptWriter: ["David Benioff", "D. B. Weiss"],
+                                      plot: "Plot season 1, episode 2",
                                       season: season1)
-
+        
         season7 = Season(seasonName: "Season 7.",
                              numberOfEpisodes: 7,
-                             launchingDate: String.getDateFor(day: "16",
-                                                              month: "07",
-                                                              year: "2017"))
+                             releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 16)),
+                             plot: "Plot season 7")
         season7Episode1 = Episode(title: "Dragonstone",
-                                      releaseDate: String.getDateFor(day: "16",
-                                                                       month: "07",
-                                                                       year: "2017"),
+                                      releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 16)),
+                                      director: ["Jeremy Podeswa"],
+                                      scriptWriter: ["David Benioff", "D. B. Weiss"],
+                                      plot: "asdf",
                                       season: season7)
         season7Episode2 = Episode(title: "Stormborn",
-                                      releaseDate: String.getDateFor(day: "23",
-                                                                       month: "07",
-                                                                       year: "2017"),
+                                      releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 23)),
+                                      director: ["Mark Mylod"],
+                                      scriptWriter: ["Bryan Cogman"],
+                                      plot: "asdf",
                                       season: season7)
 
     }
@@ -77,10 +79,12 @@ class EpisodeTest: XCTestCase {
         
         // Equality
         let anotherEpisode = Episode(title: "Another Dragonstone",
-                                     releaseDate: String.getDateFor(day: "16",
-                                                                      month: "07",
-                                                                      year: "2017"),
+                                     releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 16)),
+                                     director: ["Mark Mylod"],
+                                     scriptWriter: ["Bryan Cogman"],
+                                     plot: "Plot another episode",
                                      season: season7)
+        print(season7Episode1.releaseDate)
         XCTAssertEqual(season7Episode1, anotherEpisode)
 
         // Non Equality
@@ -92,7 +96,7 @@ class EpisodeTest: XCTestCase {
         XCTAssertNotNil(season7Episode1.hashValue)
     }
     
-    func testEpisodeComperison() {
+    func testEpisodeComparison() {
         XCTAssertGreaterThan(season1Episode2, season1Episode1)
         XCTAssertGreaterThan(season7Episode1, season1Episode1)
     }

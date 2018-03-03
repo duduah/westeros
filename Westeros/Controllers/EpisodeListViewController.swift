@@ -11,7 +11,7 @@ import UIKit
 class EpisodeListViewController: UITableViewController {
     
     // MARK: - Properties
-    let model: [Episode]
+    var model: [Episode]
     
     // MARK: - Initialization
     init(model: [Episode], seasonTitle: String) {
@@ -25,10 +25,36 @@ class EpisodeListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectLastSelectedRowFromUserDefaults(in: self, withKey: EPISODE_KEY)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        subscriteToDefaultNotification(self,
+                                       selector: #selector(seasonDidChange),
+                                       name: SEASON_DID_CHANGE_NOTIFICATION_NAME)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeFromDefaultNotification(self)
+    }
+    
 
+    // MARK: - Notifications
+    @objc func seasonDidChange(notification: Notification) {
+        guard let info = notification.userInfo else {
+            return
+        }
+        
+        let season = info[SEASON_KEY] as? Season
+        model = season?.sortedEpisodes ?? []
+        
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,9 +85,13 @@ class EpisodeListViewController: UITableViewController {
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        let episode = model[indexPath.row]
+        let episode = model[indexPath.row]        
         let episodeDetailVC = EpisodeDetailViewController(model: episode)
-        
         navigationController?.pushViewController(episodeDetailVC, animated: true)
+
+        // Guardar las coordenadas (section, row) de la última casa seleccionada para cargarla la próxima vez que se abra.
+        // No se deben guardar objetos del modelo ya que esto está hecho para datos ligeros.
+        saveLastSelected(at: indexPath.row, forKey: LAST_EPISODE)
+
     }
 }

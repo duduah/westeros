@@ -17,6 +17,8 @@
 		B307BFB02046C2110031B546 /* EpisodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B307BFAE2046C2110031B546 /* EpisodeListViewController.swift */; };
 		B307BFB12046C2110031B546 /* EpisodeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B307BFAF2046C2110031B546 /* EpisodeListViewController.xib */; };
 		B307BFB8204712230031B546 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B307BFB7204712230031B546 /* Utils.swift */; };
+		B307BFBB2049DDDC0031B546 /* MemberDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B307BFB92049DDDC0031B546 /* MemberDetailViewController.swift */; };
+		B307BFBC2049DDDC0031B546 /* MemberDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B307BFBA2049DDDC0031B546 /* MemberDetailViewController.xib */; };
 		B30CC4FF20362B8D00701568 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CC4FD20362B8D00701568 /* WikiViewController.swift */; };
 		B30CC50020362B8D00701568 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CC4FE20362B8D00701568 /* WikiViewController.xib */; };
 		B30CC503203644FA00701568 /* HouseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CC501203644FA00701568 /* HouseListViewController.swift */; };
@@ -71,6 +73,8 @@
 		B307BFAE2046C2110031B546 /* EpisodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListViewController.swift; sourceTree = "<group>"; };
 		B307BFAF2046C2110031B546 /* EpisodeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeListViewController.xib; sourceTree = "<group>"; };
 		B307BFB7204712230031B546 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B307BFB92049DDDC0031B546 /* MemberDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailViewController.swift; sourceTree = "<group>"; };
+		B307BFBA2049DDDC0031B546 /* MemberDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberDetailViewController.xib; sourceTree = "<group>"; };
 		B30CC4FD20362B8D00701568 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
 		B30CC4FE20362B8D00701568 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
 		B30CC501203644FA00701568 /* HouseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				B330A4942046BC3000427388 /* EpisodeDetailViewController.xib */,
 				B307BFAE2046C2110031B546 /* EpisodeListViewController.swift */,
 				B307BFAF2046C2110031B546 /* EpisodeListViewController.xib */,
+				B307BFB92049DDDC0031B546 /* MemberDetailViewController.swift */,
+				B307BFBA2049DDDC0031B546 /* MemberDetailViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				B376F14B203238B60095E4C5 /* codeIsComing.png in Resources */,
 				B34C1FED203B68D800AA82D0 /* MemberList2ViewController.xib in Resources */,
 				B302EEDC202CE4AE0064363F /* LaunchScreen.storyboard in Resources */,
+				B307BFBC2049DDDC0031B546 /* MemberDetailViewController.xib in Resources */,
 				B330A4962046BC3000427388 /* EpisodeDetailViewController.xib in Resources */,
 				B302EED9202CE4AE0064363F /* Assets.xcassets in Resources */,
 				B330A48E2045D4BC00427388 /* SeasonListViewController.xib in Resources */,
@@ -353,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B376F15620323D540095E4C5 /* HouseDetailViewController.swift in Sources */,
+				B307BFBB2049DDDC0031B546 /* MemberDetailViewController.swift in Sources */,
 				B30E7022203F3A82007C116B /* Episode.swift in Sources */,
 				B302EEFF202CFDEF0064363F /* Person.swift in Sources */,
 				B30E7025203F6A0A007C116B /* Date+Additions.swift in Sources */,

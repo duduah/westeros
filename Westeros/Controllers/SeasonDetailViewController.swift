@@ -14,6 +14,16 @@ class SeasonDetailViewController: UIViewController {
     @IBOutlet weak var seasonNameLabel: UILabel!
     @IBOutlet weak var seasonReleaseDateLabel: UILabel!
     @IBOutlet weak var seasonTotalNumberOfEpisodesLabel: UILabel!
+    @IBOutlet weak var seasonPlotLabel: UILabel!
+    
+    // MARK: - Actions
+    @IBAction func episodesListButton(_ sender: UIButton) {
+        let episodes = model.sortedEpisodes
+        if (episodes.count > 0) {
+            let episodeListVC = EpisodeListViewController(model: episodes, seasonTitle: model.name)
+            navigationController?.pushViewController(episodeListVC, animated: true)
+        }
+    }
     
     // MARK: - Properties
     var model: Season
@@ -41,6 +51,7 @@ class SeasonDetailViewController: UIViewController {
     func syncModelWithView() {
         seasonReleaseDateLabel.text = model.releaseDate.description
         seasonTotalNumberOfEpisodesLabel.text = model.totalNumberOfEpisodes.description
+        seasonPlotLabel.text = model.plot
         title = model.name
     }
     
