@@ -19,7 +19,13 @@ class MemberList2ViewController: UIViewController {
     init(model: [Person]) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        title = "Members"
+        title = appTitles.membersTitle.rawValue
+    }
+    
+    init(model: [Person], membersListTitle: appTitles) {
+        self.model = model
+        super.init(nibName: nil, bundle: nil)
+        title = membersListTitle.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,18 +42,13 @@ class MemberList2ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        // Subscribe to notification
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self,
+        subscriteToDefaultNotification(self,
                                        selector: #selector(houseDidChange),
-                                       name: NSNotification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME),
-                                       object: nil)
+                                       name: HOUSE_DID_CHANGE_NOTIFICATION_NAME)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        // Unsubscribe from notification
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(self)
+        unsubscribeFromDefaultNotification(self)
     }
     
     // MARK: - Notifications
@@ -56,7 +57,7 @@ class MemberList2ViewController: UIViewController {
             return
         }
         
-        let house = info[HOUSE_KEY] as? House
+        let house = info[NotificationKeys.house.rawValue] as? House
         model = (house?.sortedMembers)!
 
         tableView.reloadData()
@@ -92,7 +93,6 @@ extension MemberList2ViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension MemberList2ViewController: UITableViewDelegate {
-    // MARK: - Table view delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Get the model
         let person = model[indexPath.row]

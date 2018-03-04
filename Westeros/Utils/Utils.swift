@@ -8,37 +8,51 @@
 import UIKit
 
 
-// MARK: - Constants
-let APP_TITLE = "Westeros"
-let SEASONS_LISTVC_TITLE = "Seasons"
-let MEMBERS_TITLE = "Members"
-let WIKI_TITLE = "Wiki"
+// MARK: - Constants for navigation/tabBar titles
+enum appTitles: String {
+    case appTitle = "Westeros"
+    case seasonsTitle = "Seasons"
+    case episodesTitle = "Episodes"
+    case membersTitle = "Members"
+    case wikiTitle = "Wiki"
+}
+
+// MARK: - Constants for saving in user defaults
+enum UserDefaultKeys: String {
+    case house = "LastHouse"
+    case season = "LastSeason"
+    case episode = "LastEpisode"
+}
+
+// MARK: - Constants for notifications
+enum NotificationKeys: String {
+    case house = "HouseKey"
+    case season = "SeasonKey"
+    case episode = "EpisodeKey"
+}
 
 let HOUSE_DID_CHANGE_NOTIFICATION_NAME = "HouseDidChange"
-let HOUSE_KEY = "HouseKey"
-let LAST_HOUSE = "LastHouse"
 
 let SEASON_DID_CHANGE_NOTIFICATION_NAME = "SeasonDidChange"
-let SEASON_KEY = "SeasonKey"
 let LAST_SEASON = "LastSeason"
 
-let EPISODE_KEY = "EpisodeKey"
 let LAST_EPISODE = "LastEpisode"
 
 // MARK: - Enums
 
 /**
- List os houses in Westeros
+ List of houses in Westeros
  */
 enum HousesOfWesteros: String {
     case Stark, Lanister, Targaryen
 }
 
-// MARK: - Common methods
-
+// MARK: - UserDefaults
 /**
- This function saves the row index of the UITableViewController param in the UserDefaults standard area.
+ This function saves the row index and the section (0 by now) of the UITableViewController param in the UserDefaults standard area.
  
+ **Important**: this is to save light weight data. Don't save objects from the model or so.
+
  Usage:
  
         saveLastSelected(at: indexPath.row, forKey: "LastSeason")
@@ -47,9 +61,9 @@ enum HousesOfWesteros: String {
     - row: the index of de table view to be saved.
     - forKey: the key to identify it.
  */
-func saveLastSelected(at row: Int, forKey: String) {
+func saveLastSelected(at row: Int, forKey: UserDefaultKeys) {
     let defaults = UserDefaults.standard
-    defaults.set(row, forKey: forKey)
+    defaults.set(row, forKey: forKey.rawValue)
     
     // Por si las moscas, hay una manera de guardar la información
     defaults.synchronize()
@@ -66,8 +80,8 @@ func saveLastSelected(at row: Int, forKey: String) {
     - tableVC: the table view to select the row in
     - key: the key to identify the index to load
  */
-func selectLastSelectedRowFromUserDefaults(in tableVC: UITableViewController, withKey key: String) {
-    let lastRowSelected = UserDefaults.standard.integer(forKey: key)
+func selectLastSelectedRowFromUserDefaults(in tableVC: UITableViewController, withKey key: UserDefaultKeys) {
+    let lastRowSelected = UserDefaults.standard.integer(forKey: key.rawValue)
     let indexPath = IndexPath(row: lastRowSelected, section: 0)
     
     tableVC.tableView.selectRow(at: indexPath,
@@ -75,7 +89,7 @@ func selectLastSelectedRowFromUserDefaults(in tableVC: UITableViewController, wi
                              scrollPosition: .top)
 }
 
-
+// MARK: - Notificatios
 /**
  Subscribes a view controller to default notification center.
  

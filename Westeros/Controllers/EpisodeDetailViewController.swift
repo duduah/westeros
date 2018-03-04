@@ -62,7 +62,7 @@ class EpisodeDetailViewController: UIViewController {
         guard let info = notification.userInfo else {
             return
         }
-        let season = info[SEASON_KEY] as? Season
+        let season = info[NotificationKeys.season.rawValue] as? Season
         model = (season?.sortedEpisodes.first)!
         syncModelWithView()
     }

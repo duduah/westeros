@@ -17,7 +17,13 @@ class MemberListViewController: UITableViewController {
     init(model: [Person]) {
         self.model = model
         super.init(style: .plain)
-        title = MEMBERS_TITLE
+        title = appTitles.membersTitle.rawValue
+    }
+    
+    init(model: [Person], listTitle: appTitles) {
+        self.model = model
+        super.init(style: .plain)
+        title = listTitle.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,7 +57,7 @@ class MemberListViewController: UITableViewController {
             return
         }
         
-        let house = info[HOUSE_KEY] as! House
+        let house = info[NotificationKeys.house.rawValue] as! House
         
         model = house.sortedMembers        
     }

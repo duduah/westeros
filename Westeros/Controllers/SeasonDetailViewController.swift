@@ -20,7 +20,7 @@ class SeasonDetailViewController: UIViewController {
     @IBAction func episodesListButton(_ sender: UIButton) {
         let episodes = model.sortedEpisodes
         if (episodes.count > 0) {
-            let episodeListVC = EpisodeListViewController(model: episodes, seasonTitle: model.name)
+            let episodeListVC = EpisodeListViewController(model: episodes, title: .episodesTitle)
             navigationController?.pushViewController(episodeListVC, animated: true)
         }
     }

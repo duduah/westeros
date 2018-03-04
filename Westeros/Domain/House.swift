@@ -46,13 +46,13 @@ extension House {
         _members.insert(person)
     }
     
-    func add(persons: Person...) {
-        // Aquí persons es de tipo Person
-//        for person in persons {
-//            add(person: person)
-//        }
-        persons.forEach{ add(person: $0) }
-    }
+//    func add(persons: Person...) {
+//        // Aquí persons es de tipo Person
+////        for person in persons {
+////            add(person: person)
+////        }
+//        persons.forEach{ add(person: $0) }
+//    }
 }
 
 // MARK: - Proxy

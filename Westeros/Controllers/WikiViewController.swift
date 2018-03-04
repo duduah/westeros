@@ -44,6 +44,9 @@ class WikiViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        loadingView.isHidden = false
+        loadingView.startAnimating()
+
         // Nos damos de alta en las notificaciones
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
@@ -65,7 +68,7 @@ class WikiViewController: UIViewController {
     
     // MARK: - Sync
     func syncModelWithView() {
-        title = model.name
+        title = "\(model.name) wiki"
         webView.load(URLRequest(url: model.wikiURL))
     }
     
@@ -77,7 +80,7 @@ class WikiViewController: UIViewController {
         }
         
         // Sacar la casa del usuario
-        let house = info[HOUSE_KEY] as? House
+        let house = info[NotificationKeys.house.rawValue] as? House
         
         // Actualizar el modelo
         model = house!

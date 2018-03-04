@@ -22,6 +22,7 @@ final class Person {
         self.name = name
         _alias = alias
         self.house = house
+        house.add(person: self)
     }
 }
 

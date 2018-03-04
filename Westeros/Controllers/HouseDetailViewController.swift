@@ -50,11 +50,11 @@ class HouseDetailViewController: UIViewController {
 
     // MARK: - UI
     func setupUI() {
-        let wikiButton = UIBarButtonItem(title: WIKI_TITLE,
+        let wikiButton = UIBarButtonItem(title: appTitles.wikiTitle.rawValue,
                                          style: .plain,
                                          target: self,
                                          action: #selector(displayWiki))
-        let membersButton = UIBarButtonItem(title: MEMBERS_TITLE,
+        let membersButton = UIBarButtonItem(title: appTitles.membersTitle.rawValue,
                                             style: .plain,
                                             target: self,
                                             action: #selector(displayMembers))

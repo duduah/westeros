@@ -66,7 +66,7 @@ class MemberDetailViewController: UIViewController {
             return
         }
         
-        let house = info[HOUSE_KEY] as? House
+        let house = info[NotificationKeys.house.rawValue] as? House
         guard let member = house?.sortedMembers.first else {
             navigationController?.popViewController(animated: true)
             return

@@ -14,11 +14,18 @@ class EpisodeListViewController: UITableViewController {
     var model: [Episode]
     
     // MARK: - Initialization
-    init(model: [Episode], seasonTitle: String) {
+    init(model: [Episode], title episodesTitle: appTitles) {
         self.model = model
         super.init(style: .plain)
         
-        title = seasonTitle
+        title = episodesTitle.rawValue
+    }
+    
+    init(model: [Episode]) {
+        self.model = model
+        super.init(style: .plain)
+        
+        title = appTitles.episodesTitle.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,7 +36,7 @@ class EpisodeListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectLastSelectedRowFromUserDefaults(in: self, withKey: EPISODE_KEY)
+        selectLastSelectedRowFromUserDefaults(in: self, withKey: .episode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +56,7 @@ class EpisodeListViewController: UITableViewController {
             return
         }
         
-        let season = info[SEASON_KEY] as? Season
+        let season = info[NotificationKeys.season.rawValue] as? Season
         model = season?.sortedEpisodes ?? []
         
         self.tableView.reloadData()
@@ -89,9 +96,7 @@ class EpisodeListViewController: UITableViewController {
         let episodeDetailVC = EpisodeDetailViewController(model: episode)
         navigationController?.pushViewController(episodeDetailVC, animated: true)
 
-        // Guardar las coordenadas (section, row) de la última casa seleccionada para cargarla la próxima vez que se abra.
-        // No se deben guardar objetos del modelo ya que esto está hecho para datos ligeros.
-        saveLastSelected(at: indexPath.row, forKey: LAST_EPISODE)
+        saveLastSelected(at: indexPath.row, forKey: .episode)
 
     }
 }

@@ -22,6 +22,7 @@ enum DateFormats {
     case dMyyyy(day: Int, month: Int, year: Int)
 }
 
+// MARK: - Date conversion
 extension Date {
 
     static func getYearFrom(date: Date) -> Int {
@@ -48,12 +49,13 @@ extension Date {
     }
     
     /**
-     Cast the String param to Date.
+     Cast the enum DateFormats param to Date.
      
      Usage:
      
-            let date1 = Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 17))
-     
+             let date1 = Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 17))
+             let date2 = Date.getDateFor(date: .dMyyyy(day: 17, month: 4, year: 2011))
+
      - Parameter date: String that must fit to **yyyy-M-d** format.
      
      - Return: a equivalent Date for date param.

@@ -22,7 +22,13 @@ class SeasonListViewController: UITableViewController {
     init(model: [Season]) {
         self.model = model
         super.init(style: .plain)
-        title = SEASONS_LISTVC_TITLE
+        title = appTitles.seasonsTitle.rawValue
+    }
+    
+    init(model: [Season], listTitle: appTitles) {
+        self.model = model
+        super.init(style: .plain)
+        title = listTitle.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +39,7 @@ class SeasonListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectLastSelectedRowFromUserDefaults(in: self, withKey: SEASON_KEY)
+        selectLastSelectedRowFromUserDefaults(in: self, withKey: .season)
     }
 
     // MARK: - Table view data source
@@ -77,12 +83,12 @@ class SeasonListViewController: UITableViewController {
         
         let notification = Notification(name: Notification.Name(SEASON_DID_CHANGE_NOTIFICATION_NAME),
                                         object: self,
-                                        userInfo: [SEASON_KEY: season])
+                                        userInfo: [NotificationKeys.season.rawValue: season])
         notificationCenter.post(notification)
 //        let seasonDetailVC = SeasonDetailViewController(model: season)
 //        navigationController?.pushViewController(seasonDetailVC, animated: true)
 
-        saveLastSelected(at: indexPath.row, forKey: LAST_SEASON)
+        saveLastSelected(at: indexPath.row, forKey: .season)
     }
 }
 
@@ -90,6 +96,10 @@ extension SeasonListViewController {
     func lastRowSelected() -> Season {
         // Extraer la row del User Defaults
         let row = UserDefaults.standard.integer(forKey: LAST_SEASON)
+        
+        guard row < model.count else {
+            return model[0]
+        }
         
         // Averiguar la casa de ese row
         return model[row]

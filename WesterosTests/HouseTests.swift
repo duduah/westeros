@@ -59,24 +59,13 @@ class HouseTests: XCTestCase {
         XCTAssertNotNil(starkSigil)
         XCTAssertNotNil(lannisterSigil)
     }
-
-    func testAddPersons() {
-        XCTAssertEqual(starkHouse.count, 0)
-
-        starkHouse.add(person: robb)
-        XCTAssertEqual(starkHouse.count, 1)
+    
+    func testPersonsInHouses() {
+        XCTAssertNotEqual(starkHouse.count, 0)
+        XCTAssertNotEqual(lannisterHouse.count, 0)
         
-        starkHouse.add(person: robb)
-        XCTAssertEqual(starkHouse.count, 1)
-
-        starkHouse.add(person: arya)
         XCTAssertEqual(starkHouse.count, 2)
-        
-        starkHouse.add(person: tyrion)
-        XCTAssertEqual(starkHouse.count, 2)
-        
-        lannisterHouse.add(persons: cersei, jaime, jaime, jaime, cersei)
-        XCTAssertEqual(lannisterHouse.count, 2)
+        XCTAssertEqual(lannisterHouse.count, 3)
     }
     
     func testHouseEquality() {
@@ -84,8 +73,9 @@ class HouseTests: XCTestCase {
         XCTAssertEqual(starkHouse, starkHouse)
         
         // Igualdad
-        let jinxed = House(name: "Stark", sigil: starkSigil, words: "Winter is coming", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Stark")!)
-        XCTAssertEqual(jinxed, starkHouse)
+        let starkHouse2 = House(name: "Stark", sigil: starkSigil, words: "Winter is coming", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Stark")!)
+        let starkHouse3 = House(name: "Stark", sigil: starkSigil, words: "Winter is coming", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Stark")!)
+        XCTAssertEqual(starkHouse2, starkHouse3)
         
         // Desigualdad
         XCTAssertNotEqual(starkHouse, lannisterHouse)
@@ -93,14 +83,16 @@ class HouseTests: XCTestCase {
     
     func testHouseHashable() {
         XCTAssertNotNil(starkHouse.hashValue)
+        XCTAssertNotNil(lannisterHouse.hashValue)
     }
     
     func testHouseComparison() {
-        XCTAssertLessThan(lannisterHouse, starkHouse)
+//        XCTAssertLessThan(lannisterHouse, starkHouse)
+        XCTAssertGreaterThan(starkHouse, lannisterHouse)
     }
     
     func testHouseReturnsSortedArrayOfMembers() {
-        starkHouse.add(persons: robb, arya)
+//        starkHouse.add(persons: robb, arya)
         XCTAssertNotEqual(starkHouse.sortedMembers, [robb, arya])
     }
 }

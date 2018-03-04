@@ -26,7 +26,13 @@ class HouseListViewController: UITableViewController {
     init(model: [House]) {
         self.model = model
         super.init(style: .plain)
-        title = APP_TITLE
+        title = appTitles.appTitle.rawValue
+    }
+    
+    init(model: [House], listTitle: appTitles) {
+        self.model = model
+        super.init(style: .plain)
+        title = listTitle.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +43,7 @@ class HouseListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lastRow = UserDefaults.standard.integer(forKey: LAST_HOUSE)
+        let lastRow = UserDefaults.standard.integer(forKey: UserDefaultKeys.house.rawValue)
         let indexPath = IndexPath(row: lastRow, section: 0)
 
         tableView.selectRow(at: indexPath,
@@ -94,20 +100,23 @@ class HouseListViewController: UITableViewController {
         // Creamos la notificación
         let notificacion = Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME),
                                         object: self,
-                                        userInfo: [HOUSE_KEY: house])
+                                        userInfo: [NotificationKeys.house.rawValue: house])
         notificationCenter.post(notificacion)
         
         // Guardar las coordenadas (section, row) de la última casa seleccionada para cargarla la próxima vez que se abra.
         // No se deben guardar objetos del modelo ya que esto está hecho para datos ligeros.
-        saveLastSelected(at: indexPath.row, forKey: LAST_HOUSE)
+        saveLastSelected(at: indexPath.row, forKey: .house)
     }
 }
 
 extension HouseListViewController {
     func lastRowSelected() -> House {
         // Extraer la row del User Defaults
-        let row = UserDefaults.standard.integer(forKey: LAST_HOUSE)
+        let row = UserDefaults.standard.integer(forKey: UserDefaultKeys.house.rawValue)
         
+        guard row < model.count else {
+            return model[0]
+        }
         // Averiguar la casa de ese row
         let house = model[row]
         

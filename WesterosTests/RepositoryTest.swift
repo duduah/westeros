@@ -58,10 +58,13 @@ class RepositoryTest: XCTestCase {
     
     func testSeasonFiltering() {
         // let currentYear = Calendar(identifier: .iso8601).component(.year, from: Date())
-        let seasonsFiltered = Repository.local.seasons(filteredBy: { $0.totalNumberOfEpisodes == 10 } )
+        var seasonsFiltered = Repository.local.seasons(filteredBy: { $0.totalNumberOfEpisodes == 10 } )
         XCTAssertEqual(seasonsFiltered.count, 6)
-        
-        let seasonsFiltered2 = Repository.local.seasons(filteredBy: { Date.getYearFrom(date: $0.releaseDate) == currentYear } )
-        XCTAssertEqual(seasonsFiltered2.count, 0)
+
+        seasonsFiltered = Repository.local.seasons(filteredBy: { $0.totalNumberOfEpisodes == 7 } )
+        XCTAssertEqual(seasonsFiltered.count, 1)
+
+        seasonsFiltered = Repository.local.seasons(filteredBy: { Date.getYearFrom(date: $0.releaseDate) == currentYear } )
+        XCTAssertEqual(seasonsFiltered.count, 0)
     }
 }

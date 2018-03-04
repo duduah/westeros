@@ -36,24 +36,19 @@ final class LocalFactory: HouseFactory {
         let lannisterHouse = House(name: "Lanister", sigil: lannisterSigil, words: "We will kill you all", url: URL(string: "https://awoiaf.westeros.org/index.php/House_Lannister")!)
         let targaryenHouse = House(name: "Targaryen", sigil: targaryenSigil, words: "Fuego y sangre", url: URL(string: "https://awoiaf.westeros.org/index.php/House_Targaryen")!)
         
-        let robb = Person(name: "Robb", alias: "Young Wolf", house: starkHouse)
-        let arya = Person(name: "Arya", house: starkHouse)
-        let tyrion = Person(name: "Tyrion", alias: "Dwarf", house: lannisterHouse)
-        let ned = Person(name: "Eddard", alias: "Ned", house: starkHouse)
-        let cersei = Person(name: "Cersei", house: lannisterHouse)
-        let jaime = Person(name: "Jaime", alias: "El Matarreyes", house: lannisterHouse)
-        let dani = Person(name: "Daenerys", alias: "Madre de Dragones", house: targaryenHouse)
+        _ = Person(name: "Robb", alias: "Young Wolf", house: starkHouse)
+        _ = Person(name: "Arya", house: starkHouse)
+        _ = Person(name: "Tyrion", alias: "Dwarf", house: lannisterHouse)
+        _ = Person(name: "Eddard", alias: "Ned", house: starkHouse)
+        _ = Person(name: "Cersei", house: lannisterHouse)
+        _ = Person(name: "Jaime", alias: "El Matarreyes", house: lannisterHouse)
+        _ = Person(name: "Daenerys", alias: "Madre de Dragones", house: targaryenHouse)
 
-        // Add characters to houses
-        starkHouse.add(persons: arya, robb, ned)
-        lannisterHouse.add(persons: tyrion, cersei, jaime)
-        targaryenHouse.add(person: dani)
-        
         return [starkHouse, lannisterHouse, targaryenHouse].sorted()
     }
     
     var seasons: [Season] {
-        let season1 = Season(seasonName: "Season 1. Game of Thrones",
+        let season1 = Season(seasonName: "Season 1",
                              numberOfEpisodes: 10,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 17)),
                              plot: """
@@ -85,7 +80,7 @@ A Night's Watch deserter is tracked down outside of Winterfell, prompting swift 
                                       season: season1)
         season1.add(episodes: season1Episode1, season1Episode2, season1Episode3)
         
-        let season2 = Season(seasonName: "Season 2. A Clash of Kings",
+        let season2 = Season(seasonName: "Season 2",
                              numberOfEpisodes: 10,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2012, month: 4, day: 1)),
                              plot: """
@@ -109,7 +104,7 @@ Far to the east, Daenerys Targaryen has hatched the only three dragons in the wo
                                       season: season2)
         season2.add(episodes: season2Episode1, season2Episode2)
         
-        let season3 = Season(seasonName: "Season 3. A Storm of Swords 1/2",
+        let season3 = Season(seasonName: "Season 3",
                              numberOfEpisodes: 10,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2013, month: 3, day: 31)),
                              plot: "Plot season 3")
@@ -133,7 +128,7 @@ Far to the east, Daenerys Targaryen has hatched the only three dragons in the wo
                                       season: season3)
         season3.add(episodes: season3Episode1, season3Episode2, season3Episode3)
         
-        let season4 = Season(seasonName: "Season 4. A Storm of Swords 2/2",
+        let season4 = Season(seasonName: "Season 4",
                              numberOfEpisodes: 10,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2014, month: 4, day: 6)),
                              plot: "Plot season 4")
@@ -157,7 +152,7 @@ Far to the east, Daenerys Targaryen has hatched the only three dragons in the wo
                                       season: season4)
         season4.add(episodes: season4Episode1, season4Episode2, season4Episode3)
         
-        let season5 = Season(seasonName: "Season 5. A Feast for Crows",
+        let season5 = Season(seasonName: "Season 5",
                              numberOfEpisodes: 10,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2015, month: 4, day: 12)),
                              plot: "Plot season 5")
@@ -175,7 +170,7 @@ Far to the east, Daenerys Targaryen has hatched the only three dragons in the wo
                                       season: season5)
         season5.add(episodes: season5Episode1, season5Episode2)
 
-        let season6 = Season(seasonName: "Season 6. A Song of Ice and Fire",
+        let season6 = Season(seasonName: "Season 6",
                              numberOfEpisodes: 10,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2016, month: 4, day: 24)),
                              plot: "Plot season 6")
@@ -205,7 +200,7 @@ Far to the east, Daenerys Targaryen has hatched the only three dragons in the wo
                                       season: season6)
         season6.add(episodes: season6Episode1, season6Episode2, season6Episode3, season6Episode4)
 
-        let season7 = Season(seasonName: "Season 7.",
+        let season7 = Season(seasonName: "Season 7",
                              numberOfEpisodes: 7,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 16)),
                              plot: "Plot season 7")
