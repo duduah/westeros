@@ -27,6 +27,7 @@ final class Episode {
         self.scriptWriter = scriptWriter
         self.plot = plot
         self.season = season
+        season.add(episode: self)
     }
 }
 

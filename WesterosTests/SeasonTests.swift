@@ -19,11 +19,11 @@ class SeasonTests: XCTestCase {
     
     var seasonEpisodes: [Episode]!
     
-    var seasonEpisode: Episode!
-    var season1Episode1: Episode!
-    var season1Episode2: Episode!
-    var season7Episode1: Episode!
-    var season7Episode2: Episode!
+//    var seasonEpisode: Episode!
+//    var season1Episode1: Episode!
+//    var season1Episode2: Episode!
+//    var season7Episode1: Episode!
+//    var season7Episode2: Episode!
     
     override func setUp() {
         super.setUp()
@@ -32,7 +32,7 @@ class SeasonTests: XCTestCase {
                          numberOfEpisodes: 10,
                          releaseDate: Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 17)),
                          plot: "Plot season 1")
-        season1Episode1 = Episode(title: "Winter is Coming",
+        _ = Episode(title: "Winter is Coming",
                                       releaseDate: Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 17)),
                                       director: ["Tim Van Patten"],
                                       scriptWriter: ["David Benioff", "D. B. Weiss"],
@@ -40,7 +40,7 @@ class SeasonTests: XCTestCase {
 A Night's Watch deserter is tracked down outside of Winterfell, prompting swift justice by Lord Eddard “Ned” Stark and raising concerns about the dangers in the lawless lands north of the Wall. Returning home, Ned learns from his wife Catelyn that his mentor, Jon Arryn, has died in the Seven Kingdoms capital of King's Landing, and that King Robert is on his way north to offer Ned Arryn's position as the King's Hand. Meanwhile, across the Narrow Sea in Pentos, the exiled Prince Viserys Targaryen hatches a plan to win back the throne, which entails forging an allegiance with the savage nomadic Dothraki warriors by giving its leader, Khal Drogo, his lovely sister Daenerys' hand in marriage in exchange for Drogo's army. Back in Winterfell, Robert arrives at Winterfell with his wife, Queen Cersei, and other members of the Lannister family: her twin brother Jaime, dwarf brother Tyrion and Cersei’s son and heir to the throne, 12-year-old Joffrey. Ned's wife Catelyn receives a clue that may implicate members of the royal family in a murder, and their young son Bran makes a jaw-dropping discovery.
 """,
                                       season: season1)
-        season1Episode2 = Episode(title: "The Kingsroad",
+        _ = Episode(title: "The Kingsroad",
                                       releaseDate: Date.getDateFor(date: .yyyyMd(year: 2011, month: 4, day: 24)),
                                       director: ["Tim Van Patten"],
                                       scriptWriter: ["David Benioff", "D. B. Weiss"],
@@ -51,13 +51,13 @@ A Night's Watch deserter is tracked down outside of Winterfell, prompting swift 
                              numberOfEpisodes: 7,
                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 16)),
                              plot: "Plot season 7")
-        season7Episode1 = Episode(title: "Dragonstone",
+        _ = Episode(title: "Dragonstone",
                                       releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 16)),
                                       director: ["Jeremy Podeswa"],
                                       scriptWriter: ["David Benioff", "D. B. Weiss"],
                                       plot: "asdf",
                                       season: season7)
-        season7Episode2 = Episode(title: "Stormborn",
+        _ = Episode(title: "Stormborn",
                                       releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 23)),
                                       director: ["Mark Mylod"],
                                       scriptWriter: ["Bryan Cogman"],
@@ -106,16 +106,16 @@ A Night's Watch deserter is tracked down outside of Winterfell, prompting swift 
     }
     
     func testAddEpisodes() {
-        season1.add(episode: season1Episode1)
-        XCTAssertEqual(season1.sortedEpisodes.count, 1)
+        XCTAssertEqual(season7.sortedEpisodes.count, 2)
 
-        season1.add(episode: season1Episode1)
-        XCTAssertEqual(season1.sortedEpisodes.count, 1)
-
-        season1.add(episode: season1Episode2)
         XCTAssertEqual(season1.sortedEpisodes.count, 2)
         
-        season7.add(episodes: season7Episode1, season7Episode2, season7Episode2)
-        XCTAssertEqual(season7.sortedEpisodes.count, 2)
+        _ = Episode(title: "Stormborn",
+                                              releaseDate: Date.getDateFor(date: .yyyyMd(year: 2017, month: 7, day: 23)),
+                                              director: ["Mark Mylod"],
+                                              scriptWriter: ["Bryan Cogman"],
+                                              plot: "asdf",
+                                              season: season1)
+        XCTAssertEqual(season1.sortedEpisodes.count, 3)
     }
 }
